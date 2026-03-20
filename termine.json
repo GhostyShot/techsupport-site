@@ -1,0 +1,27 @@
+{
+  "termine": [
+    {
+      "id": 1,
+      "titel": "Wochenmarkt Radolfzell",
+      "tag": "Samstag",
+      "uhrzeit": "9:00 – 11:00 Uhr",
+      "ort": "Marktplatz, 78315 Radolfzell am Bodensee",
+      "typ": "haupttermin",
+      "aktiv": true,
+      "notiz": "Kein Stand nötig — einfach vorbeikommen und ansprechen."
+    },
+    {
+      "id": 2,
+      "titel": "Ortsverwaltung Böhringen",
+      "tag": "Termine auf Anfrage",
+      "uhrzeit": "",
+      "ort": "Rathausstraße 3, Böhringen",
+      "typ": "zusatztermin",
+      "aktiv": true,
+      "notiz": "Schreib mir vorher kurz — ich sag dir wann ich da bin."
+    }
+  ],
+  "naechster_termin": "",
+  "banner_aktiv": false,
+  "banner_text": ""
+}
