@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech-Hilfe Radolfzell — Paul Faller</title>
+<meta name="description" content="iPhone kaputt? App spinnt? Paul hilft — vor Ort in Radolfzell & Böhringen. 7,50 € nur wenn gelöst.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0c0c0e;--bg2:#131316;--bg3:#1a1a1f;--line:rgba(255,255,255,0.07);--line2:rgba(255,255,255,0.12);--text:#f0ede8;--text2:#8a8892;--text3:#5a5862;--accent:#5a7fff;--accent2:#3d5ce8;--glow:rgba(90,127,255,0.15);--green:#3ecf8e;--r:14px;--r2:10px}
+html{scroll-behavior:smooth}
+body{font-family:'Geist',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none;z-index:0}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;border-bottom:1px solid var(--line);background:rgba(12,12,14,0.8);backdrop-filter:blur(20px) saturate(180%)}
+.logo{font-family:'Instrument Serif',serif;font-size:20px;color:var(--text);text-decoration:none}
+.logo em{color:var(--accent);font-style:italic}
+.nav-right{display:flex;align-items:center;gap:4px}
+.nav-link{font-size:13px;color:var(--text2);text-decoration:none;padding:7px 14px;border-radius:8px;transition:color .2s,background .2s}
+.nav-link:hover{color:var(--text);background:rgba(255,255,255,.05)}
+.nav-btn{font-size:13px;font-weight:500;color:var(--bg);background:var(--text);text-decoration:none;padding:8px 18px;border-radius:8px;transition:opacity .2s;margin-left:8px}
+.nav-btn:hover{opacity:.85}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 32px 80px;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black 20%,transparent 100%)}
+.hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(90,127,255,0.10) 0%,transparent 70%);top:-150px;left:50%;transform:translateX(-50%);pointer-events:none}
+.hero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:40px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';display:block;height:1px;width:28px;background:var(--text3)}
+.hero h1{font-family:'Instrument Serif',serif;font-size:clamp(56px,9vw,100px);line-height:.98;letter-spacing:-0.03em;margin-bottom:32px;color:var(--text)}
+.hero h1 i{font-style:italic;color:var(--text2)}
+.hero-sub{font-size:clamp(15px,2vw,18px);color:var(--text2);font-weight:300;max-width:460px;line-height:1.75;margin-bottom:48px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:80px}
+.cta-main{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:white;text-decoration:none;padding:13px 24px;border-radius:var(--r2);font-size:14px;font-weight:500;transition:background .2s,transform .15s,box-shadow .2s}
+.cta-main:hover{background:var(--accent2);transform:translateY(-1px);box-shadow:0 8px 32px var(--glow)}
+.cta-ghost{display:inline-flex;align-items:center;gap:8px;color:var(--text2);text-decoration:none;padding:13px 22px;border-radius:var(--r2);font-size:14px;border:1px solid var(--line2);transition:color .2s,border-color .2s,background .2s}
+.cta-ghost:hover{color:var(--text);border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.04)}
+.hero-stats{display:flex;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--bg2);width:fit-content}
+.hero-stat{padding:20px 36px;border-right:1px solid var(--line)}
+.hero-stat:last-child{border-right:none}
+.hero-stat-num{font-family:'Instrument Serif',serif;font-size:30px;letter-spacing:-0.02em;color:var(--text);line-height:1;margin-bottom:4px}
+.hero-stat-label{font-size:12px;color:var(--text3)}
+.marquee-wrap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;overflow:hidden;background:var(--bg2);position:relative;z-index:2}
+.marquee-track{display:flex;white-space:nowrap;animation:marquee 24s linear infinite;width:max-content}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--text3);padding:0 28px;letter-spacing:.02em}
+.marquee-dot{width:4px;height:4px;border-radius:50%;background:var(--accent);flex-shrink:0}
+section{position:relative;z-index:1}
+.container{max-width:960px;margin:0 auto;padding:0 32px}
+.s-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);font-weight:500;margin-bottom:14px}
+.s-title{font-family:'Instrument Serif',serif;font-size:clamp(34px,5vw,54px);letter-spacing:-0.025em;line-height:1.05;color:var(--text)}
+.s-title i{font-style:italic;color:var(--text2)}
+.leistungen-wrap{padding:100px 0;border-top:1px solid var(--line)}
+.leistungen-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px;gap:24px;flex-wrap:wrap}
+.leistungen-header-right{font-size:14px;color:var(--text3);max-width:300px;line-height:1.65}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.service-item{background:var(--bg);padding:32px 28px;transition:background .25s}
+.service-item:hover{background:var(--bg3)}
+.service-num{font-size:11px;color:var(--text3);font-weight:500;letter-spacing:.08em;margin-bottom:18px}
+.service-icon{width:40px;height:40px;border-radius:10px;background:var(--bg3);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:14px}
+.service-item h3{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px;letter-spacing:-0.01em}
+.service-item p{font-size:13px;color:var(--text2);line-height:1.55}
+.termine-section{padding:100px 0;border-top:1px solid var(--line);background:var(--bg2)}
+.termine-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:52px}
+.termin-card{border:1px solid var(--line);border-radius:var(--r);padding:32px;background:var(--bg);position:relative;overflow:hidden;transition:border-color .25s}
+.termin-card:hover{border-color:var(--line2)}
+.termin-card.primary{border-color:rgba(90,127,255,.28);background:linear-gradient(140deg,rgba(90,127,255,.06) 0%,var(--bg) 55%)}
+.termin-card.primary:hover{border-color:rgba(90,127,255,.5)}
+.tc-glow{position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(90,127,255,.1) 0%,transparent 70%);top:-70px;right:-70px;pointer-events:none}
+.termin-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.termin-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.termin-card h3{font-family:'Instrument Serif',serif;font-size:22px;letter-spacing:-0.02em;color:var(--text);margin-bottom:16px}
+.termin-row{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);margin-bottom:8px}
+.termin-row svg{color:var(--text3);flex-shrink:0}
+.termin-note{margin-top:20px;padding:12px 14px;background:rgba(255,255,255,.03);border-radius:var(--r2);border:1px solid var(--line);font-size:12px;color:var(--text3)}
+.preis-section{padding:100px 0;border-top:1px solid var(--line)}
+.preis-inner{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:52px}
+.preis-left{background:var(--bg2);padding:56px 48px;display:flex;flex-direction:column;justify-content:center}
+.preis-big{font-family:'Instrument Serif',serif;font-size:84px;line-height:1;letter-spacing:-0.04em;color:var(--text);margin-bottom:8px}
+.preis-big sup{font-size:34px;vertical-align:super;color:var(--text2);font-family:'Geist',sans-serif;font-weight:300}
+.preis-per{font-size:13px;color:var(--text3);margin-bottom:28px}
+.guarantee-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(62,207,142,.1);border:1px solid rgba(62,207,142,.2);border-radius:8px;padding:10px 16px;font-size:13px;color:var(--green);font-weight:500;width:fit-content}
+.preis-right{background:var(--bg);padding:56px 48px;display:flex;flex-direction:column;justify-content:center}
+.preis-right h3{font-family:'Instrument Serif',serif;font-size:26px;letter-spacing:-0.02em;color:var(--text);margin-bottom:14px}
+.preis-right p{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:28px}
+.preis-items{display:flex;flex-direction:column;gap:12px}
+.preis-item{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:var(--text2)}
+.preis-check{width:18px;height:18px;border-radius:50%;background:rgba(62,207,142,.12);border:1px solid rgba(62,207,142,.2);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--green);font-size:10px;margin-top:1px}
+.kontakt-section{padding:100px 0;border-top:1px solid var(--line);background:var(--bg2)}
+.kontakt-inner{display:grid;grid-template-columns:5fr 7fr;gap:64px;margin-top:52px;align-items:start}
+.kontakt-left h3{font-family:'Instrument Serif',serif;font-size:24px;letter-spacing:-0.02em;color:var(--text);margin-bottom:12px}
+.kontakt-left p{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:28px}
+.contact-link{display:flex;align-items:center;gap:14px;padding:15px 18px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r2);text-decoration:none;color:var(--text);font-size:14px;font-weight:500;margin-bottom:10px;transition:border-color .2s,background .2s}
+.contact-link:hover{border-color:var(--line2);background:var(--bg3)}
+.cl-icon{width:36px;height:36px;border-radius:8px;background:var(--bg3);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.cl-sub{font-size:12px;color:var(--text3);font-weight:400;margin-top:2px}
+.cl-arrow{margin-left:auto;color:var(--text3)}
+.form-card{background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:32px}
+.form-card h4{font-size:15px;font-weight:600;color:var(--text);margin-bottom:22px;letter-spacing:-0.01em}
+.fg{margin-bottom:14px}
+.fl{font-size:12px;color:var(--text3);font-weight:500;display:block;margin-bottom:6px;letter-spacing:.02em}
+input[type=text],input[type=email],input[type=tel],textarea{width:100%;background:var(--bg2);border:1px solid var(--line2);border-radius:var(--r2);padding:11px 14px;font-family:'Geist',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .2s,background .2s;-webkit-font-smoothing:antialiased}
+input::placeholder,textarea::placeholder{color:var(--text3)}
+input:focus,textarea:focus{border-color:rgba(90,127,255,.5);background:rgba(90,127,255,.04)}
+textarea{resize:vertical;min-height:110px;line-height:1.6}
+.form-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.submit-btn{width:100%;background:var(--accent);color:white;border:none;padding:13px 20px;border-radius:var(--r2);font-family:'Geist',sans-serif;font-size:14px;font-weight:500;cursor:pointer;margin-top:6px;transition:background .2s,transform .15s;display:flex;align-items:center;justify-content:center;gap:8px}
+.submit-btn:hover{background:var(--accent2);transform:translateY(-1px)}
+.form-note{font-size:12px;color:var(--text3);text-align:center;margin-top:10px}
+footer{border-top:1px solid var(--line);padding:28px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.footer-logo{font-family:'Instrument Serif',serif;font-size:17px;color:var(--text2);text-decoration:none}
+.footer-logo em{color:var(--accent);font-style:italic}
+.footer-copy{font-size:12px;color:var(--text3)}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:12px;color:var(--text3);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--text2)}
+@media(max-width:768px){nav{padding:0 20px}.nav-link{display:none}.hero{padding:100px 20px 60px}.hero-stats{flex-direction:column;width:100%}.hero-stat{border-right:none;border-bottom:1px solid var(--line)}.hero-stat:last-child{border-bottom:none}.container{padding:0 20px}.services-grid{grid-template-columns:1fr 1fr}.termine-cards{grid-template-columns:1fr}.preis-inner{grid-template-columns:1fr}.preis-left{padding:36px 28px}.preis-right{padding:36px 28px}.kontakt-inner{grid-template-columns:1fr;gap:40px}.form-row2{grid-template-columns:1fr}footer{flex-direction:column;text-align:center;padding:24px 20px}}
+@media(max-width:520px){.services-grid{grid-template-columns:1fr}.hero h1{font-size:48px}}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.06s}.d2{transition-delay:.13s}.d3{transition-delay:.20s}.d4{transition-delay:.27s}.d5{transition-delay:.34s}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">Paul<em>.</em>Tech</a>
+  <div class="nav-right">
+    <a href="#leistungen" class="nav-link">Leistungen</a>
+    <a href="#termine" class="nav-link">Termine</a>
+    <a href="#preis" class="nav-link">Preis</a>
+    <a href="#kontakt" class="nav-btn">Anfragen</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow reveal">Radolfzell &amp; Böhringen · Bodensee</div>
+    <h1 class="reveal d1">Technik<br><i>einfach</i><br>erklärt.</h1>
+    <p class="hero-sub reveal d2">Dein iPhone spinnt, das WLAN streikt oder eine App macht Probleme? Ich löse es — persönlich, schnell und fair.</p>
+    <div class="hero-actions reveal d3">
+      <a href="#kontakt" class="cta-main">Problem melden <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#leistungen" class="cta-ghost">Was ich löse</a>
+    </div>
+    <div class="hero-stats reveal d4">
+      <div class="hero-stat"><div class="hero-stat-num">7,50 €</div><div class="hero-stat-label">Pro Problem</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">0 €</div><div class="hero-stat-label">Wenn nicht gelöst</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">vor Ort</div><div class="hero-stat-label">Persönlich</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap"><div class="marquee-track">
+  <span class="marquee-item"><span class="marquee-dot"></span>iPhone &amp; iOS</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>Android</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>WLAN &amp; Internet</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>Passwörter</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>Apps einrichten</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>Fotos &amp; Speicher</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>E-Mail</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>WhatsApp</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>iCloud</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>Laptop-Basics</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>iPhone &amp; iOS</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>Android</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>WLAN &amp; Internet</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>Passwörter</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>Apps einrichten</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>Fotos &amp; Speicher</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>E-Mail</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>WhatsApp</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>iCloud</span>
+  <span class="marquee-item"><span class="marquee-dot"></span>Laptop-Basics</span>
+</div></div>
+
+<section id="leistungen">
+  <div class="container leistungen-wrap">
+    <div class="leistungen-header">
+      <div><p class="s-label reveal">Leistungen</p><h2 class="s-title reveal d1">Diese Probleme<br><i>löse ich für dich</i></h2></div>
+      <p class="leistungen-header-right reveal d2">Kein Problem ist zu klein. Ich erkläre dir gerne wie alles funktioniert damit du nächstes Mal selbst weiterkommst.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-item reveal"><div class="service-num">01</div><div class="service-icon">📱</div><h3>iPhone &amp; iOS</h3><p>Apps, Updates, Face ID, Apple ID, iCloud — alles rund ums iPhone.</p></div>
+      <div class="service-item reveal d1"><div class="service-num">02</div><div class="service-icon">🤖</div><h3>Android</h3><p>Samsung, Xiaomi, Huawei &amp; Co. — ich kenn mich auf allen Geräten aus.</p></div>
+      <div class="service-item reveal d2"><div class="service-num">03</div><div class="service-icon">📶</div><h3>WLAN &amp; Internet</h3><p>Verbindungsprobleme, Router einrichten, kein Internet trotz WLAN.</p></div>
+      <div class="service-item reveal d3"><div class="service-num">04</div><div class="service-icon">🔑</div><h3>Passwörter</h3><p>Gesperrte Apple ID, vergessene Zugangsdaten, neue Konten einrichten.</p></div>
+      <div class="service-item reveal d4"><div class="service-num">05</div><div class="service-icon">📸</div><h3>Fotos &amp; Speicher</h3><p>Speicher voll, Fotos sichern, iCloud aktivieren, Bilder übertragen.</p></div>
+      <div class="service-item reveal d5"><div class="service-num">06</div><div class="service-icon">💻</div><h3>Noch mehr</h3><p>E-Mail, WhatsApp, Drucker, Laptop-Basics — einfach fragen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="termine" class="termine-section">
+  <div class="container">
+    <p class="s-label reveal">Wann &amp; wo</p>
+    <h2 class="s-title reveal d1">Hier findest<br><i>du mich</i></h2>
+    <div class="termine-cards">
+      <div class="termin-card primary reveal d2">
+        <div class="tc-glow"></div>
+        <div class="termin-tag"><span class="termin-tag-dot"></span>Haupttermin</div>
+        <h3>Wochenmarkt Radolfzell</h3>
+        <div class="termin-row"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M1 6h12M5 1v2M9 1v2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Samstag, 9:00 – 11:00 Uhr</div>
+        <div class="termin-row"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.79 1 3 2.79 3 5c0 3.25 4 8 4 8s4-4.75 4-8c0-2.21-1.79-4-4-4z" stroke="currentColor" stroke-width="1.2"/><circle cx="7" cy="5" r="1.5" stroke="currentColor" stroke-width="1.2"/></svg>Marktplatz, 78315 Radolfzell am Bodensee</div>
+        <div class="termin-note">Kein Stand nötig — einfach vorbeikommen und ansprechen.</div>
+      </div>
+      <div class="termin-card reveal d3">
+        <div class="termin-tag"><span class="termin-tag-dot"></span>Zusatztermin</div>
+        <h3>Ortsverwaltung Böhringen</h3>
+        <div class="termin-row"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M1 6h12M5 1v2M9 1v2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Termine auf Anfrage</div>
+        <div class="termin-row"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.79 1 3 2.79 3 5c0 3.25 4 8 4 8s4-4.75 4-8c0-2.21-1.79-4-4-4z" stroke="currentColor" stroke-width="1.2"/><circle cx="7" cy="5" r="1.5" stroke="currentColor" stroke-width="1.2"/></svg>Rathausstraße 3, Böhringen</div>
+        <div class="termin-note">Schreib mir vorher kurz — ich sag dir wann ich da bin.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="preis" class="preis-section">
+  <div class="container">
+    <p class="s-label reveal">Preise</p>
+    <h2 class="s-title reveal d1">Ein Preis.<br><i>Keine Überraschungen.</i></h2>
+    <div class="preis-inner reveal d2">
+      <div class="preis-left">
+        <div class="preis-big"><sup>€</sup>7,50</div>
+        <div class="preis-per">pro gelöstes Problem</div>
+        <div class="guarantee-badge"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.6 3.3L12 5l-2.5 2.4.6 3.4L7 9.3 3.9 10.8l.6-3.4L2 5l3.4-.7L7 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>Nicht gelöst = 0 €</div>
+      </div>
+      <div class="preis-right">
+        <h3>Fair &amp; transparent</h3>
+        <p>Kein Stundentakt, keine Anfahrtskosten, keine versteckten Gebühren. Du weißt vorher was du zahlst — und zahlst nur wenn ich es wirklich gelöst habe.</p>
+        <div class="preis-items">
+          <div class="preis-item"><div class="preis-check">✓</div>Fixpreis — egal wie lange es dauert</div>
+          <div class="preis-item"><div class="preis-check">✓</div>Kein Problem gelöst? Kein Geld.</div>
+          <div class="preis-item"><div class="preis-check">✓</div>Keine Anfahrtskosten</div>
+          <div class="preis-item"><div class="preis-check">✓</div>Ich erkläre dir was ich gemacht habe</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt" class="kontakt-section">
+  <div class="container">
+    <p class="s-label reveal">Kontakt</p>
+    <h2 class="s-title reveal d1">Problem?<br><i>Schreib mir.</i></h2>
+    <div class="kontakt-inner">
+      <div class="kontakt-left reveal d2">
+        <h3>Ich antworte schnell</h3>
+        <p>Beschreib kurz was nicht funktioniert — WhatsApp ist am schnellsten, aber auch per Mail erreichst du mich problemlos.</p>
+        <a href="https://wa.me/49DEINEHANDYNUMMER" class="contact-link" target="_blank">
+          <div class="cl-icon">💬</div>
+          <div><div>WhatsApp</div><div class="cl-sub">Schnellste Antwort</div></div>
+          <span class="cl-arrow">→</span>
+        </a>
+        <a href="mailto:hilfe@paulfaller.me" class="contact-link">
+          <div class="cl-icon">✉️</div>
+          <div><div>hilfe@paulfaller.me</div><div class="cl-sub">Antworte innerhalb von Stunden</div></div>
+          <span class="cl-arrow">→</span>
+        </a>
+      </div>
+      <div class="reveal d3">
+        <div class="form-card">
+          <h4>Anfrage senden</h4>
+          <form action="https://formspree.io/f/DEINE-ID" method="POST">
+            <div class="form-row2">
+              <div class="fg"><label class="fl">Name</label><input type="text" name="name" placeholder="Dein Name" required></div>
+              <div class="fg"><label class="fl">Telefon (optional)</label><input type="tel" name="telefon" placeholder="+49 …"></div>
+            </div>
+            <div class="fg"><label class="fl">E-Mail</label><input type="email" name="email" placeholder="deine@email.de" required></div>
+            <div class="fg"><label class="fl">Dein Problem</label><textarea name="problem" placeholder="z.B. &quot;Mein iPhone startet nicht mehr neu&quot;" required></textarea></div>
+            <button type="submit" class="submit-btn">Anfrage abschicken <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <p class="form-note">Ich melde mich so schnell wie möglich zurück.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="#" class="footer-logo">Paul<em>.</em>Tech</a>
+  <p class="footer-copy">© 2026 Paul Faller · Radolfzell am Bodensee</p>
+  <div class="footer-links"><a href="mailto:hilfe@paulfaller.me">hilfe@paulfaller.me</a></div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
