@@ -5,226 +5,259 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin — Paul.Tech</title>
 <meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0c0c0e;--bg2:#131316;--bg3:#1a1a1f;--line:rgba(255,255,255,0.08);--line2:rgba(255,255,255,0.14);--text:#f0ede8;--text2:#8a8892;--text3:#5a5862;--accent:#5a7fff;--accent2:#3d5ce8;--green:#3ecf8e;--red:#e24b4a;--r:12px}
-body{font-family:'Geist',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px;-webkit-font-smoothing:antialiased}
-#login{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}
-.login-card{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:40px;width:100%;max-width:380px}
-.login-card h1{font-size:20px;font-weight:600;margin-bottom:6px}
-.login-card p{font-size:13px;color:var(--text3);margin-bottom:28px}
-.field{margin-bottom:14px}
-.field label{font-size:12px;color:var(--text3);display:block;margin-bottom:6px;letter-spacing:.03em}
-.field input{width:100%;background:var(--bg3);border:1px solid var(--line2);border-radius:8px;padding:11px 14px;font-family:'Geist',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .2s}
-.field input:focus{border-color:rgba(90,127,255,.5)}
-.btn{width:100%;background:var(--accent);color:white;border:none;padding:12px;border-radius:8px;font-family:'Geist',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:background .2s}
-.btn:hover{background:var(--accent2)}
-.btn-ghost{background:transparent;border:1px solid var(--line2);color:var(--text2)}
-.btn-ghost:hover{background:var(--bg3);border-color:var(--line2)}
-.btn-danger{background:rgba(226,75,74,.15);border:1px solid rgba(226,75,74,.3);color:var(--red)}
-.btn-danger:hover{background:rgba(226,75,74,.25)}
-.err{color:var(--red);font-size:13px;margin-top:10px;display:none}
-#app{display:none;max-width:720px;margin:0 auto;padding:32px 20px 80px}
-.app-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;padding-bottom:20px;border-bottom:1px solid var(--line)}
-.app-header h1{font-size:18px;font-weight:600}
-.app-header a{font-size:13px;color:var(--text3);text-decoration:none}
-.app-header a:hover{color:var(--text2)}
-.section{margin-bottom:32px}
-.section-title{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);font-weight:500;margin-bottom:16px}
-.card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:24px;margin-bottom:12px}
-.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.card-title{font-size:15px;font-weight:500}
-.badge{font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;letter-spacing:.04em}
-.badge-main{background:rgba(90,127,255,.15);color:var(--accent)}
-.badge-extra{background:rgba(255,255,255,.06);color:var(--text3)}
-.toggle-wrap{display:flex;align-items:center;gap:10px}
+:root{--bg:#0c0c0e;--bg2:#131316;--bg3:#1a1a1f;--line:rgba(255,255,255,0.07);--line2:rgba(255,255,255,0.12);--text:#f0ede8;--text2:#8a8892;--text3:#5a5862;--accent:#5a7fff;--accent2:#3d5ce8;--green:#3ecf8e;--red:#e84040;--r:14px;--r2:10px}
+body{font-family:'Geist',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:40px 24px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:680px;margin:0 auto}
+.logo{font-size:18px;font-weight:500;color:var(--text);margin-bottom:8px;letter-spacing:-0.01em}
+.logo span{color:var(--accent)}
+.subtitle{font-size:13px;color:var(--text3);margin-bottom:40px}
+
+/* LOGIN */
+#login-screen{display:block}
+#app-screen{display:none}
+.login-card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:32px;max-width:400px}
+.login-card h2{font-size:18px;font-weight:500;margin-bottom:6px;letter-spacing:-0.01em}
+.login-card p{font-size:13px;color:var(--text3);margin-bottom:24px;line-height:1.6}
+.field-label{font-size:12px;color:var(--text3);font-weight:500;display:block;margin-bottom:6px;letter-spacing:.02em}
+input[type=password],input[type=text],input[type=date],input[type=time],textarea,select{
+  width:100%;background:var(--bg3);border:1px solid var(--line2);border-radius:var(--r2);
+  padding:10px 14px;font-family:'Geist',sans-serif;font-size:14px;color:var(--text);
+  outline:none;transition:border-color .2s
+}
+input:focus,textarea:focus,select:focus{border-color:rgba(90,127,255,.5)}
+textarea{resize:vertical;min-height:80px;line-height:1.5}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 20px;border-radius:var(--r2);font-family:'Geist',sans-serif;font-size:14px;font-weight:500;cursor:pointer;border:none;transition:opacity .2s,transform .15s}
+.btn:hover{opacity:.85;transform:translateY(-1px)}
+.btn-primary{background:var(--accent);color:white;width:100%;margin-top:16px}
+.btn-danger{background:rgba(232,64,64,.15);color:var(--red);border:1px solid rgba(232,64,64,.2);font-size:13px;padding:7px 14px}
+.btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--line2);font-size:13px;padding:7px 14px}
+.btn-success{background:rgba(62,207,142,.15);color:var(--green);border:1px solid rgba(62,207,142,.2)}
+.error{background:rgba(232,64,64,.1);border:1px solid rgba(232,64,64,.2);border-radius:var(--r2);padding:10px 14px;font-size:13px;color:var(--red);margin-top:12px;display:none}
+
+/* SECTION */
+.section-title{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);font-weight:500;margin-bottom:16px;margin-top:40px}
+
+/* TERMINE */
+.termin-card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:24px;margin-bottom:12px;position:relative}
+.termin-card.inactive{opacity:.5}
+.termin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px}
+.termin-typ{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.termin-titel{font-size:16px;font-weight:500;letter-spacing:-0.01em}
+.termin-actions{display:flex;gap:8px;flex-shrink:0}
+.field-group{margin-bottom:14px}
+.toggle-row{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
 .toggle-label{font-size:13px;color:var(--text2)}
 .toggle{position:relative;width:36px;height:20px;flex-shrink:0}
-.toggle input{opacity:0;width:0;height:0;position:absolute}
-.toggle-track{position:absolute;inset:0;background:var(--bg3);border:1px solid var(--line2);border-radius:20px;cursor:pointer;transition:background .2s}
-.toggle input:checked + .toggle-track{background:var(--accent);border-color:var(--accent)}
-.toggle-thumb{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:white;transition:transform .2s;pointer-events:none}
-.toggle input:checked ~ .toggle-thumb{transform:translateX(16px)}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:500px){.form-grid{grid-template-columns:1fr}}
-.fg{margin-bottom:12px}
-.fl{font-size:12px;color:var(--text3);display:block;margin-bottom:5px}
-input[type=text],input[type=date],textarea,select{width:100%;background:var(--bg3);border:1px solid var(--line2);border-radius:8px;padding:9px 12px;font-family:'Geist',sans-serif;font-size:13px;color:var(--text);outline:none;transition:border-color .2s}
-input:focus,textarea:focus,select:focus{border-color:rgba(90,127,255,.5)}
-textarea{resize:vertical;min-height:60px;line-height:1.5}
-select option{background:var(--bg2)}
-.divider{height:1px;background:var(--line);margin:16px 0}
-.save-bar{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--line);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.save-bar p{font-size:13px;color:var(--text3)}
-.save-btn{background:var(--accent);color:white;border:none;padding:10px 24px;border-radius:8px;font-family:'Geist',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:background .2s}
-.save-btn:hover{background:var(--accent2)}
-.toast{position:fixed;top:20px;right:20px;background:var(--bg2);border:1px solid rgba(62,207,142,.3);border-radius:10px;padding:12px 18px;font-size:13px;color:var(--green);display:none;z-index:999;animation:fadeIn .2s}
-@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
-.instructions{background:var(--bg3);border:1px solid var(--line);border-radius:10px;padding:16px 18px;font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:24px}
-.instructions strong{color:var(--text);font-weight:500}
+.toggle input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;inset:0;background:var(--bg3);border:1px solid var(--line2);border-radius:20px;transition:.2s}
+.toggle-slider::before{content:'';position:absolute;width:14px;height:14px;left:2px;top:2px;background:var(--text3);border-radius:50%;transition:.2s}
+.toggle input:checked+.toggle-slider{background:rgba(62,207,142,.2);border-color:rgba(62,207,142,.4)}
+.toggle input:checked+.toggle-slider::before{transform:translateX(16px);background:var(--green)}
+
+/* NEU BUTTON */
+.add-btn{width:100%;padding:14px;background:transparent;border:1px dashed var(--line2);border-radius:var(--r);color:var(--text3);font-family:'Geist',sans-serif;font-size:14px;cursor:pointer;transition:border-color .2s,color .2s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px}
+.add-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* SAVE BAR */
+.save-bar{position:sticky;bottom:24px;background:var(--bg2);border:1px solid var(--line2);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:32px;backdrop-filter:blur(12px)}
+.save-status{font-size:13px;color:var(--text3)}
+.save-status.saved{color:var(--green)}
+.save-status.saving{color:var(--accent)}
+.save-status.error{color:var(--red)}
+.btn-save{background:var(--accent);color:white;padding:10px 24px;border-radius:var(--r2);font-family:'Geist',sans-serif;font-size:14px;font-weight:500;cursor:pointer;border:none;transition:opacity .2s}
+.btn-save:hover{opacity:.85}
+.btn-save:disabled{opacity:.4;cursor:not-allowed}
+
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text3);text-decoration:none;margin-bottom:32px;transition:color .2s}
+.back-link:hover{color:var(--text)}
 </style>
 </head>
 <body>
+<div class="wrap">
+  <a href="/" class="back-link">← Zurück zur Website</a>
+  <div class="logo">Paul<span>.</span>Tech <span style="font-weight:300;color:var(--text3)">Admin</span></div>
+  <p class="subtitle">Termine verwalten — Änderungen gehen sofort live</p>
 
-<div id="login">
-  <div class="login-card">
-    <h1>Paul.Tech Admin</h1>
-    <p>Termine & Inhalte bearbeiten</p>
-    <div class="field">
-      <label>Passwort</label>
-      <input type="password" id="pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')login()">
-    </div>
-    <button class="btn" onclick="login()">Einloggen</button>
-    <p class="err" id="err">Falsches Passwort</p>
-  </div>
-</div>
-
-<div id="app">
-  <div class="app-header">
-    <h1>Admin</h1>
-    <a href="/">← zur Website</a>
-  </div>
-
-  <div class="instructions">
-    <strong>So funktioniert es:</strong> Ändere hier deine Termine und Inhalte, dann klick unten auf „Speichern & Deployen". Die Änderungen gehen direkt auf GitHub und Vercel deployt automatisch — dauert ca. 1 Minute.
-  </div>
-
-  <div class="section">
-    <div class="section-title">Banner</div>
-    <div class="card">
-      <div class="toggle-wrap" style="margin-bottom:16px">
-        <label class="toggle">
-          <input type="checkbox" id="banner_aktiv">
-          <div class="toggle-track"></div>
-          <div class="toggle-thumb"></div>
-        </label>
-        <span class="toggle-label">Ankündigungs-Banner anzeigen</span>
-      </div>
-      <div class="fg">
-        <label class="fl">Banner-Text (z.B. "Erster Termin: Sa. 29. März, 9–11 Uhr am Wochenmarkt")</label>
-        <input type="text" id="banner_text" placeholder="Ankündigung eingeben...">
-      </div>
+  <!-- LOGIN -->
+  <div id="login-screen">
+    <div class="login-card">
+      <h2>Anmelden</h2>
+      <p>Gib deinen GitHub Personal Access Token ein. Du findest ihn unter GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic). Er braucht nur den <strong>repo</strong> Scope.</p>
+      <label class="field-label">GitHub Token</label>
+      <input type="password" id="token-input" placeholder="ghp_..." autocomplete="off">
+      <div class="error" id="login-error">Token ungültig oder keine Zugriffsberechtigung.</div>
+      <button class="btn btn-primary" onclick="login()">Anmelden</button>
     </div>
   </div>
 
-  <div class="section">
-    <div class="section-title">Termine</div>
+  <!-- APP -->
+  <div id="app-screen">
+    <div class="section-title">Aktuelle Termine</div>
     <div id="termine-list"></div>
-  </div>
+    <button class="add-btn" onclick="addTermin()">+ Neuen Termin hinzufügen</button>
 
-  <div class="save-bar">
-    <p>Änderungen werden direkt auf die Website gepusht</p>
-    <button class="save-btn" onclick="saveAll()">Speichern & Deployen</button>
+    <div class="save-bar">
+      <span class="save-status" id="save-status">Ungespeicherte Änderungen</span>
+      <button class="btn-save" id="save-btn" onclick="saveTermine()">Speichern &amp; Deploy</button>
+    </div>
   </div>
 </div>
-
-<div class="toast" id="toast">Gespeichert! Vercel deployt jetzt...</div>
 
 <script>
-const PASS = btoa('paul2026tech');
-const GITHUB_TOKEN_KEY = 'gh_token';
 const OWNER = 'GhostyShot';
 const REPO = 'techsupport-site';
 const FILE = 'termine.json';
-
-let data = null;
-let fileSha = null;
 let token = '';
+let currentSha = '';
+let termine = [];
+let nextId = 10;
 
 function login() {
-  const pw = document.getElementById('pw').value;
-  if (btoa(pw) === PASS) {
-    token = prompt('GitHub Token (einmalig nötig):') || '';
-    if (!token) { document.getElementById('err').style.display='block'; document.getElementById('err').textContent='Token fehlt'; return; }
-    sessionStorage.setItem(GITHUB_TOKEN_KEY, token);
-    document.getElementById('login').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
-    loadData();
-  } else {
-    document.getElementById('err').style.display = 'block';
+  const t = document.getElementById('token-input').value.trim();
+  if (!t) return;
+  token = t;
+  loadTermine();
+}
+
+async function loadTermine() {
+  try {
+    const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`, {
+      headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (!res.ok) throw new Error('Auth failed');
+    const data = await res.json();
+    currentSha = data.sha;
+    const content = JSON.parse(atob(data.content.replace(/\n/g, '')));
+    termine = content.termine;
+    nextId = Math.max(...termine.map(t => t.id)) + 1;
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app-screen').style.display = 'block';
+    renderTermine();
+    setSaveStatus('saved', 'Alle Änderungen gespeichert');
+  } catch(e) {
+    document.getElementById('login-error').style.display = 'block';
   }
 }
 
-async function loadData() {
-  token = sessionStorage.getItem(GITHUB_TOKEN_KEY) || token;
-  const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`, {
-    headers: { Authorization: `token ${token}` }
-  });
-  const json = await res.json();
-  fileSha = json.sha;
-  data = JSON.parse(atob(json.content.replace(/\n/g, '')));
-  render();
-}
-
-function render() {
-  document.getElementById('banner_aktiv').checked = data.banner_aktiv;
-  document.getElementById('banner_text').value = data.banner_text || '';
-
+function renderTermine() {
   const list = document.getElementById('termine-list');
-  list.innerHTML = data.termine.map((t, i) => `
-    <div class="card">
-      <div class="card-header">
-        <div style="display:flex;align-items:center;gap:10px">
-          <span class="badge ${t.typ === 'haupttermin' ? 'badge-main' : 'badge-extra'}">
-            ${t.typ === 'haupttermin' ? 'Haupttermin' : 'Zusatztermin'}
-          </span>
+  list.innerHTML = '';
+  termine.forEach((t, i) => {
+    list.innerHTML += `
+    <div class="termin-card ${t.aktiv ? '' : 'inactive'}" id="card-${t.id}">
+      <div class="termin-header">
+        <div>
+          <div class="termin-typ">${t.typ}</div>
+          <div class="termin-titel">${t.titel}</div>
         </div>
-        <div class="toggle-wrap">
-          <label class="toggle">
-            <input type="checkbox" ${t.aktiv ? 'checked' : ''} onchange="data.termine[${i}].aktiv=this.checked">
-            <div class="toggle-track"></div>
-            <div class="toggle-thumb"></div>
-          </label>
-          <span class="toggle-label">${t.aktiv ? 'Aktiv' : 'Versteckt'}</span>
+        <div class="termin-actions">
+          <button class="btn btn-danger" onclick="deleteTermin(${t.id})">Löschen</button>
         </div>
       </div>
-      <div class="form-grid">
-        <div class="fg">
-          <label class="fl">Titel</label>
-          <input type="text" value="${t.titel}" oninput="data.termine[${i}].titel=this.value">
-        </div>
-        <div class="fg">
-          <label class="fl">Tag / Wochentag</label>
-          <input type="text" value="${t.tag}" oninput="data.termine[${i}].tag=this.value" placeholder="z.B. Samstag oder Termine auf Anfrage">
-        </div>
-        <div class="fg">
-          <label class="fl">Uhrzeit</label>
-          <input type="text" value="${t.uhrzeit}" oninput="data.termine[${i}].uhrzeit=this.value" placeholder="z.B. 9:00 – 11:00 Uhr">
-        </div>
-        <div class="fg">
-          <label class="fl">Ort</label>
-          <input type="text" value="${t.ort}" oninput="data.terme[${i}]?data.termine[${i}].ort=this.value:null" oninput="data.termine[${i}].ort=this.value">
-        </div>
+      <div class="field-group">
+        <label class="field-label">Bezeichnung</label>
+        <input type="text" value="${t.titel}" onchange="update(${t.id}, 'titel', this.value)">
       </div>
-      <div class="fg">
-        <label class="fl">Notiz (kleiner Text unten)</label>
-        <input type="text" value="${t.notiz}" oninput="data.termine[${i}].notiz=this.value">
+      <div class="field-group">
+        <label class="field-label">Typ (z.B. Haupttermin, Zusatztermin)</label>
+        <input type="text" value="${t.typ}" onchange="update(${t.id}, 'typ', this.value)">
       </div>
-    </div>
-  `).join('');
-}
-
-async function saveAll() {
-  data.banner_aktiv = document.getElementById('banner_aktiv').checked;
-  data.banner_text = document.getElementById('banner_text').value;
-
-  const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
-  const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`, {
-    method: 'PUT',
-    headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message: 'Update termine.json via admin', content, sha: fileSha })
+      <div class="field-group">
+        <label class="field-label">Wann</label>
+        <input type="text" value="${t.wann}" onchange="update(${t.id}, 'wann', this.value)" placeholder="z.B. Samstag, 9:00 – 11:00 Uhr">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Wo</label>
+        <input type="text" value="${t.wo}" onchange="update(${t.id}, 'wo', this.value)" placeholder="Adresse">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Notiz (klein unter der Adresse)</label>
+        <textarea onchange="update(${t.id}, 'notiz', this.value)">${t.notiz}</textarea>
+      </div>
+      <div class="toggle-row">
+        <label class="toggle">
+          <input type="checkbox" ${t.aktiv ? 'checked' : ''} onchange="update(${t.id}, 'aktiv', this.checked)">
+          <span class="toggle-slider"></span>
+        </label>
+        <span class="toggle-label">${t.aktiv ? 'Aktiv — wird auf der Website angezeigt' : 'Inaktiv — wird ausgeblendet'}</span>
+      </div>
+    </div>`;
   });
-  if (res.ok) {
-    const json = await res.json();
-    fileSha = json.content.sha;
-    const toast = document.getElementById('toast');
-    toast.style.display = 'block';
-    setTimeout(() => toast.style.display = 'none', 3500);
-  } else {
-    alert('Fehler beim Speichern — Token noch gültig?');
-  }
+  setSaveStatus('unsaved', 'Ungespeicherte Änderungen');
 }
+
+function update(id, field, value) {
+  const t = termine.find(t => t.id === id);
+  if (t) t[field] = value;
+  if (field === 'aktiv') {
+    const card = document.getElementById(`card-${id}`);
+    card.className = `termin-card ${value ? '' : 'inactive'}`;
+    card.querySelector('.toggle-label').textContent = value ? 'Aktiv — wird auf der Website angezeigt' : 'Inaktiv — wird ausgeblendet';
+  }
+  setSaveStatus('unsaved', 'Ungespeicherte Änderungen');
+}
+
+function addTermin() {
+  termine.push({
+    id: nextId++,
+    titel: 'Neuer Termin',
+    typ: 'Zusatztermin',
+    wann: '',
+    wo: '',
+    notiz: '',
+    aktiv: false
+  });
+  renderTermine();
+}
+
+function deleteTermin(id) {
+  if (!confirm('Termin wirklich löschen?')) return;
+  termine = termine.filter(t => t.id !== id);
+  renderTermine();
+}
+
+async function saveTermine() {
+  const btn = document.getElementById('save-btn');
+  btn.disabled = true;
+  setSaveStatus('saving', 'Wird gespeichert...');
+  try {
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify({ termine }, null, 2))));
+    const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: 'Update termine.json via admin panel',
+        content,
+        sha: currentSha
+      })
+    });
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    currentSha = data.content.sha;
+    setSaveStatus('saved', 'Gespeichert! Vercel deployt automatisch...');
+    setTimeout(() => setSaveStatus('saved', 'Alle Änderungen gespeichert'), 4000);
+  } catch(e) {
+    setSaveStatus('error', 'Fehler beim Speichern — Token noch gültig?');
+  }
+  btn.disabled = false;
+}
+
+function setSaveStatus(type, msg) {
+  const el = document.getElementById('save-status');
+  el.textContent = msg;
+  el.className = `save-status ${type}`;
+}
+
+document.getElementById('token-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') login();
+});
 </script>
 </body>
 </html>
